@@ -26,11 +26,6 @@ const err = (error) => {
   return Promise.reject(error)
 }
 axiosInstance.interceptors.request.use(config => {
-  // const { method, data } = config
-  // if (method.toUpperCase() === "POST" && data instanceof Object) {
-  //   // 将对象转为url参数格式
-  //   config.data = qs.stringify(data)
-  // }
   return config
 }, err)
 
