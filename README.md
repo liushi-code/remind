@@ -1,4 +1,4 @@
-# antd-vue
+# remind-tool
 
 ## Project setup
 ```
