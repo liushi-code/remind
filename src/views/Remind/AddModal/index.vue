@@ -193,10 +193,12 @@ export default {
               memberList: this.handleMemberList,
               sendTime: undefined,
             }).then(res=>{
-              if(res.code === 0){
+              if (res.code === 0) {
                 this.$message.success('定时提醒添加成功')
                 this.handleCancel()
                 this.$emit('ok')
+              } else {
+                this.$message.error(res.msg)
               }
             })
           } else {
@@ -206,10 +208,12 @@ export default {
               memberList: this.handleMemberList,
               sendTime: undefined,
             }).then(res=>{
-              if(res.code === 0){
+              if (res.code === 0) {
                 this.$message.success('定时提醒编辑成功')
                 this.handleCancel()
                 this.$emit('ok')
+              } else {
+                this.$message.error(res.msg)
               }
             })
           }

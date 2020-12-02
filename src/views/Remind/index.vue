@@ -21,7 +21,7 @@
         <a-divider type="vertical" />
         <a-popconfirm
           placement="topRight"
-          @confirm="handleDelete(record.id)"
+          @confirm="handleDelete(record)"
         >
           <template slot="title">
             <div>是否确定要删除当前提醒？</div>
@@ -91,18 +91,21 @@ export default {
     // 暂停
     async handlePause (id, status) {
       const res = await pauseTask({ id,status:status === '1' ? '-1' : '1' })
-      if(res.code === 0){
+      if (res.code === 0) {
         this.$message.success(`${status === '1' ? '已暂停' : '已启动'}`)
         this.loadData()
-      }
+      } else {
+        this.$message.error(res.msg)
+      } 
     },
     // 删除
-    async handleDelete (id) {
-      console.log(id)
-      const res = await deleteTask({ id })
-      if(res.code === 0){
+    async handleDelete ({id,status}) {
+      const res = await deleteTask({ id ,status})
+      if (res.code === 0) {
         this.$message.success('删除成功')
         this.loadData()
+      } else {  
+        this.$message.error(res.msg)
       }
     }
   },
